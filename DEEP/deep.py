@@ -4,5 +4,4 @@ if Answer == "42" or Answer == "Forty Two":
     print("Yes")
 else:
     print("No")
-    s
     

@@ -17,7 +17,7 @@ def check_meal_time(time_str):
      return "breakfast time"
     elif 12 <= time < 13:
        return "lunch time"
-    elif 18 <= time < 19:
+    elif 21 <= time < 22:
        return "dinner time"
     else:
        return "none"

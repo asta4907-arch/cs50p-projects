@@ -1,7 +1,13 @@
-Answer = input("What is the answer to the Great Question of Life, the Universe, and Everything?").strip().title()
+"""Answer the Great Question of Life, the Universe, and Everything."""
 
-if Answer == "42" or Answer == "Forty Two":
-    print("Yes")
-else:
-    print("No")
-    
+
+def main():
+    answer = input(
+        "What is the answer to the Great Question of Life, "
+        "the Universe, and Everything? "
+    ).strip().casefold()
+    print("Yes" if answer in {"42", "forty two", "forty-two"} else "No")
+
+
+if __name__ == "__main__":
+    main()

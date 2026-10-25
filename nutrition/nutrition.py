@@ -1,16 +1,16 @@
-item = input("Item: ").title()
+"""Look up approximate calories for selected fruits."""
 
-if item == "Apple":
-    print("Calorie: 130")
-elif item == "Banana":
-    print("Calorie: 110")
-elif item == "Sweet Cherries":
-    print("Calorie: 100")
-elif item == "Avocado":
-    print("Calorie: 50")
-elif item == "Kiwifruit":
-    print("Calorie: 90")
-elif item == "Pear":
-    print("Calorie: 100")
-else:
-    print("")
+CALORIES = {
+    "apple": 130, "avocado": 50, "banana": 110,
+    "kiwifruit": 90, "pear": 100, "sweet cherries": 100,
+}
+
+
+def main():
+    item = input("Item: ").strip().casefold()
+    if item in CALORIES:
+        print(f"Calories: {CALORIES[item]}")
+
+
+if __name__ == "__main__":
+    main()

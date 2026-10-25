@@ -47,8 +47,9 @@ def main() -> int:
 
     try:
         price_usd = get_bitcoin_price(api_key)
-    except (requests.RequestException, ValueError, KeyError, TypeError) as exc:
-        print(f"Error fetching Bitcoin price: {exc}", file=sys.stderr)
+    except (requests.RequestException, ValueError, KeyError, TypeError):
+        # Avoid printing request exceptions: they may include the API key in the URL.
+        print("Error fetching Bitcoin price. Check your key and try again.", file=sys.stderr)
         return 1
 
     print(f"Amount in USD: ${amount * price_usd:,.4f}")

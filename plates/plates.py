@@ -1,19 +1,22 @@
-def main():
-    plate = input("Plate: ")
-    if is_valid(plate):
-        print("Valid")  
-    else:
-        print("Invalid")   
+"""Validate vanity plate strings."""
 
-def is_valid(s):
-    if len(s) < 2 or len(s) > 6:
+
+def is_valid(plate):
+    if not 2 <= len(plate) <= 6 or not plate[:2].isalpha() or not plate.isalnum():
         return False
-    if not s[0].isalpha() or not s[1].isalpha():
-        return False
-    if not s.isalnum():
-        return False
-    if any(char.isdigit() for char in s[2:]) and s[2] == '0':
-        return False
+    digits_start = next(
+        (index for index, char in enumerate(plate) if char.isdigit()), len(plate)
+    )
+    if digits_start < len(plate):
+        if plate[digits_start] == "0" or not plate[digits_start:].isdigit():
+            return False
     return True
 
-main()
+
+def main():
+    plate = input("Plate: ")
+    print("Valid" if is_valid(plate) else "Invalid")
+
+
+if __name__ == "__main__":
+    main()

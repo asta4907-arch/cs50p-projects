@@ -1,27 +1,30 @@
-def fuel_check():
+"""Convert a fuel fraction to a gauge reading."""
+
+
+def convert(fraction):
+    numerator_text, denominator_text = fraction.split("/")
+    numerator, denominator = int(numerator_text), int(denominator_text)
+    if denominator <= 0 or numerator < 0 or numerator > denominator:
+        raise ValueError("Fraction must be between 0 and 1.")
+    return round(numerator / denominator * 100)
+
+
+def gauge(percentage):
+    if percentage <= 1:
+        return "E"
+    if percentage >= 99:
+        return "F"
+    return f"{percentage}%"
+
+
+def main():
     while True:
         try:
-            fraction = input("Fraction: ")
-            Numerator, Denominator = fraction.split("/")
-            Numerator = int(Numerator)
-            Denominator = int(Denominator)
-            if Denominator == 0:
-                raise ZeroDivisionError
-            if Numerator > Denominator or Denominator < 0 or Numerator < 0:
-                raise ValueError
-            
-            return round((Numerator / Denominator) * 100)
+            print(gauge(convert(input("Fraction: "))))
+            return
         except (ValueError, ZeroDivisionError):
-            pass
-            
-def main():
-    percentage = fuel_check()
-    if percentage <= 1:
-        print("E")
-    elif percentage >= 99:
-        print("F")
-    else:
-        print(f"{percentage}%")
+            continue
 
 
-main()
+if __name__ == "__main__":
+    main()

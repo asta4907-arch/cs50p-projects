@@ -1,4 +1,6 @@
-print("Amount due: 50")
+"""Simulate a vending machine accepting 25, 10, and 5 cent coins."""
+
+
 def main():
     amount_due = 50
     while amount_due > 0:
@@ -6,10 +8,11 @@ def main():
         try:
             coin = int(input("Insert Coin: "))
         except ValueError:
-            print("Invalid coin. Please insert a valid coin (25, 10, or 5 cents).")
             continue
-        if coin in [25, 10, 5]:
+        if coin in {25, 10, 5}:
             amount_due -= coin
-        
     print(f"Change Owed: {abs(amount_due)}")
-main()
+
+
+if __name__ == "__main__":
+    main()
